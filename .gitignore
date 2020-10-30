@@ -50,5 +50,11 @@ Thumbs.db
 
 # Environment Variables
 .env
+
+#SERVERLESS STUFF
+admin.env
+.env
+_meta
 .serverless
+
 

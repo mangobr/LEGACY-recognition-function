@@ -1,11 +1,7 @@
 import boto3
 import urllib
-import os
 
-ACCESS_KEY = os.environ.get("ACCESS_KEY")
-SECRET_KEY = os.environ.get("SECRET_KEY")
-
-rekognition = boto3.client('rekognition', region_name='us-east-1', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
+rekognition = boto3.client('rekognition', region_name='us-east-1')
 
 def detect_labels(bucket, key):
     rekognition_response = rekognition.detect_labels(Image={"S3Object": {"Bucket": bucket, "Name": key}})

@@ -21,6 +21,9 @@ pipelines:
           caches:
             - node
           script:
+            - pipe: development
+              variables:
+                LAMBDA_OUT: $LAMBDA_OUT_HML
             - npm install -g serverless
             - serverless config credentials --stage hml --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
             - serverless deploy --stage hml

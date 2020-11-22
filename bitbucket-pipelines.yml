@@ -1,21 +1,26 @@
-image: node:11.13.0-alpine
-
+image: node:12-alpine
 pipelines:
-  custom: # Pipelines that are triggered manually
-    deployment-to-prod:
+  branches:
+    main:
+      - step:
+          name: Start Deployment to Production
+          script:
+            - echo "Start Deployment"
       - step:
           name: Deploy to prod
-          caches:
-            - node
-          script:
-            - echo "Deploy to prod"
-  branches:
-    development:
-      - step:
-          name: Deploy to homolog
+          trigger: manual
           caches:
             - node
           script:
             - npm install -g serverless
-            - serverless config credentials --stage homolog --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
-            - serverless deploy --stage homolog
+            - serverless config credentials --stage prod --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
+            - serverless deploy --stage prod
+    development:
+      - step:
+          name: Deploy to hml
+          caches:
+            - node
+          script:
+            - npm install -g serverless
+            - serverless config credentials --stage hml --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
+            - serverless deploy --stage hml

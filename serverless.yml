@@ -35,4 +35,4 @@ functions:
           bucket: com.rekoreko.free
           event: s3:ObjectCreated:*
     destinations:
-      onSuccess: ${LAMBDA_OUT}
+      onSuccess: ${env:LAMBDA_OUT}

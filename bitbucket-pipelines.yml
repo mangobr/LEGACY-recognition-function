@@ -21,12 +21,12 @@ pipelines:
           caches:
             - node
           script:
-            # - pipe: atlassian/serverless-deploy:0.2.2
-            #   variables: 
-            #     LAMBDA_OUT: $LAMBDA_OUT_HML
-            #     AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY
-            #     AWS_SECRET_ACCESS_KEY: $AWS_SECRET_KEY
-            #     EXTRA_ARGS: '--stage hml'
+            - pipe: atlassian/serverless-deploy:0.2.2
+              variables: 
+                LAMBDA_OUT: $LAMBDA_OUT_HML
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_KEY
+                EXTRA_ARGS: '--stage hml'
             - echo $LAMBDA_OUT_HML
             - echo $LAMBDA_OUT_PRD
             # - npm install -g serverless

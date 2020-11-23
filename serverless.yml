@@ -13,7 +13,7 @@ provider:
         - s3:ListBucket
         - s3:GetObject
         - s3:DeleteObject
-      Resource: arn:aws:s3:::com.rekoreko.free
+      Resource: arn:aws:s3:::com.mango.rekoreko.free
     - Effect: Allow
       Action:
         - rekognition:DetectLabels
@@ -32,7 +32,7 @@ functions:
     handler: handler.lambda_handler
     events:
       - s3:
-          bucket: com.rekoreko.free
+          bucket: com.mango.rekoreko.free
           event: s3:ObjectCreated:*
     destinations:
       onSuccess: ${env:LAMBDA_OUT}
